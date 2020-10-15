@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: CategoriesScreen(),
       debugShowCheckedModeBanner: false,
-      initialRoute: BottomTabScreen.routeName,
+      initialRoute: TabScreen.routeName,
       routes: {
         BottomTabScreen.routeName: (ctx) => BottomTabScreen(),
         TabScreen.routeName: (ctx) => TabScreen(),
