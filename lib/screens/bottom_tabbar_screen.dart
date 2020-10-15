@@ -10,9 +10,15 @@ class BottomTabScreen extends StatefulWidget {
 }
 
 class _BottomTabScreenState extends State<BottomTabScreen> {
-  final List<Widget> _pages = [
-    CategoriesScreen(),
-    FavouriteScreen(),
+  final List<Map<String, Object>> _pages = [
+    {
+      'page': CategoriesScreen(),
+      'title': 'Categories',
+    },
+    {
+      'page': FavouriteScreen(),
+      'title': 'Favourite',
+    }
   ];
   int _selectedPageIndex = 0;
   void _selectPage(int index) {
@@ -26,11 +32,12 @@ class _BottomTabScreenState extends State<BottomTabScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Meals',
+          _pages[_selectedPageIndex]['title'],
         ),
       ),
-      body: _pages[_selectedPageIndex],
+      body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _selectedPageIndex,
         items: [
           BottomNavigationBarItem(
