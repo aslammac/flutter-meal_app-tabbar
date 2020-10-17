@@ -102,6 +102,7 @@ class CategoryMealsItem extends StatelessWidget {
                         color: Colors.white,
                       ),
                       softWrap: true,
+                      maxLines: 2,
                       overflow: TextOverflow.fade,
                     ),
                   ),
