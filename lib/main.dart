@@ -35,6 +35,34 @@ class _MyAppState extends State<MyApp> {
     return _favouriteMeal.any((element) => element.id == mealId);
   }
 
+  Map<String, bool> _filters = {
+    'gluten': false,
+    'luctose': false,
+    'vegan': false,
+    'vegetarian': false
+  };
+
+  void _setFilter(Map<String, bool> filterData) {
+    setState(() {
+      _filters = filterData;
+      _availableMeals = dummy_meals.where((meal) {
+        if (_filters['gluten'] && !meal.isGlutenFree) {
+          return false;
+        }
+        if (_filters['luctose'] && !meal.isLactoseFree) {
+          return false;
+        }
+        if (_filters['vegan'] && !meal.isVegan) {
+          return false;
+        }
+        if (_filters['vegetarian'] && !meal.isVegetarian) {
+          return false;
+        }
+        return true;
+      }).toList();
+    });
+  }
+
   void toggleFavourite(String mealId) {
     final existingIndex =
         _favouriteMeal.indexWhere((element) => element.id == mealId);
@@ -76,7 +104,7 @@ class _MyAppState extends State<MyApp> {
         CategoryMeals.routeName: (ctx) => CategoryMeals(_availableMeals),
         MealDetails.routeName: (ctx) =>
             MealDetails(toggleFavourite, isMealFavourite),
-        FilterScreen.routeName: (ctx) => FilterScreen(),
+        FilterScreen.routeName: (ctx) => FilterScreen(_setFilter, _filters),
         // FavouriteScreen.routeName: (ctx) => FavouriteScreen(_favouriteMeal),
       },
       // onGenerateRoute: (settings) {
