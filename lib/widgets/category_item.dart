@@ -53,20 +53,21 @@ class CategoryItem extends StatelessWidget {
               .copyWith(color: Colors.white),
         ),
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.black, color],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+          gradient: LinearGradient(
+            colors: [Colors.black, color],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(15),
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.8), BlendMode.dstOut),
+            image: NetworkImage(
+              imageUrl,
             ),
-            borderRadius: BorderRadius.circular(15),
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.3), BlendMode.dstATop),
-              image: NetworkImage(
-                imageUrl,
-              ),
-            )),
+          ),
+        ),
       ),
     );
   }

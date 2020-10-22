@@ -7,7 +7,6 @@ import './screens/tab_screen.dart';
 import './screens/bottom_tabbar_screen.dart';
 import './screens/filter_screen.dart';
 import './screens/categories_screen.dart';
-import './screens/favourite_screen.dart';
 //models
 import './models/category.dart';
 import 'models/meal.dart';
@@ -86,6 +85,21 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.teal,
         accentColor: Colors.tealAccent,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
+        appBarTheme: AppBarTheme(
+          color: Color.fromRGBO(255, 254, 229, 1),
+          brightness: Brightness.light,
+          textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
+              ),
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+          elevation: 0,
+        ),
         fontFamily: 'Roboto',
         textTheme: ThemeData.light().textTheme.copyWith(
               headline6: TextStyle(
